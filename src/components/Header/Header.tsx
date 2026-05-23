@@ -5,6 +5,21 @@ import clsx from 'clsx';
 import { navigationItems } from '@/data/navigation';
 import styles from './Header.module.scss';
 
+const extraScrollOffsets: Record<string, number> = {
+  about: 60,
+  ai: 120,
+  contacts: 60,
+};
+
+function getSectionScrollTop(section: HTMLElement, sectionId: string) {
+  const rootStyles = getComputedStyle(document.documentElement);
+  const headerHeight = parseFloat(rootStyles.getPropertyValue('--header-height')) || 76;
+  const baseOffset = headerHeight + 24;
+  const extraOffset = extraScrollOffsets[sectionId] ?? 0;
+
+  return section.getBoundingClientRect().top + window.scrollY - baseOffset + extraOffset;
+}
+
 export function Header() {
   const [activeSection, setActiveSection] = useState(navigationItems[0].id);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -21,35 +36,41 @@ export function Header() {
   }, []);
 
   useEffect(() => {
-  const sections = navigationItems
-    .map((item) => document.getElementById(item.id))
-    .filter((section): section is HTMLElement => section !== null);
+    const sections = navigationItems
+      .map((item) => document.getElementById(item.id))
+      .filter((section): section is HTMLElement => section !== null);
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      const visibleEntry = entries
-        .filter((entry) => entry.isIntersecting)
-        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleEntry = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
 
-      if (visibleEntry?.target.id) {
-        setActiveSection(visibleEntry.target.id);
-      }
-    },
-    {
-      rootMargin: '-18% 0px -62% 0px',
-      threshold: [0.1, 0.25, 0.5, 0.75],
-    },
-  );
+        if (visibleEntry?.target.id) {
+          setActiveSection(visibleEntry.target.id);
+        }
+      },
+      {
+        rootMargin: '-18% 0px -62% 0px',
+        threshold: [0.1, 0.25, 0.5, 0.75],
+      },
+    );
 
-  sections.forEach((section) => observer.observe(section));
+    sections.forEach((section) => observer.observe(section));
 
-  return () => observer.disconnect();
-}, []);
+    return () => observer.disconnect();
+  }, []);
 
   const handleNavigate = (sectionId: string) => {
-    document.getElementById(sectionId)?.scrollIntoView({
+    const section = document.getElementById(sectionId);
+
+    if (!section) {
+      return;
+    }
+
+    window.scrollTo({
+      top: getSectionScrollTop(section, sectionId),
       behavior: 'smooth',
-      block: 'start',
     });
   };
 

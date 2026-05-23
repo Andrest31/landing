@@ -89,23 +89,19 @@ export function AiHelper() {
             </h2>
 
             <p className="sectionLead">
-              Небольшая AI-интеграция для тестового задания: интерфейс отправляет
-              запрос на API-роут, сервер генерирует краткое описание разработчика
+              Небольшая AI-интеграция: генерирует краткое описание разработчика<br/>
               через AI или возвращает fallback, если ключ не настроен.
             </p>
 
             <div className={styles.workflow}>
-              <span>Frontend</span>
+              <span>GPT-4.0-mini</span>
               <span>/api/ai-summary</span>
-              <span>AI API или fallback</span>
-              <span>Result state</span>
             </div>
           </div>
 
           <div className={styles.demo}>
             <div className={styles.demoHeader}>
-              <span className={styles.demoLabel}>live demo</span>
-              <span className={styles.endpoint}>POST /api/ai-summary</span>
+              <span className={styles.demoLabel}>live</span>
             </div>
 
             <div className={styles.toneGrid}>
