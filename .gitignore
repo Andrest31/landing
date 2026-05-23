@@ -1,0 +1,11 @@
+node_modules
+dist
+coverage
+.vite
+.DS_Store
+*.tsbuildinfo
+.env
+.venv/
+__pycache__/
+*.pyc
+*.laz
