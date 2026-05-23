@@ -7,6 +7,8 @@ import {
 } from '@/lib/validation';
 import type { ContactApiResponse, ContactFormValues } from '@/types/contact';
 
+export const runtime = 'nodejs';
+
 export async function POST(request: NextRequest) {
   try {
     const body = (await request.json()) as ContactFormValues;
