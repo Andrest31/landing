@@ -95,7 +95,6 @@ export function AiHelper() {
 
             <div className={styles.workflow}>
               <span>GPT-4.0-mini</span>
-              <span>/api/ai-summary</span>
             </div>
           </div>
 

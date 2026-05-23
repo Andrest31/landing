@@ -343,6 +343,44 @@
   grid-row: span 2;
 }
 
+.materialsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
+.materialCard {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+}
+
+.materialImageWrap {
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.materialImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.28s ease;
+}
+
+.materialCard:hover .materialImage {
+  transform: scale(1.02);
+}
+
+.materialCaption {
+  color: var(--color-muted);
+  font-size: 15px;
+  line-height: 1.45;
+}
+
 .modalStack {
   display: flex;
   flex-wrap: wrap;
@@ -372,6 +410,10 @@
   .modalSection {
     grid-template-columns: 1fr;
     gap: 14px;
+  }
+
+  .materialsGrid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -409,5 +451,17 @@
 
   .preview {
     min-height: 220px;
+  }
+
+  .materialsGrid {
+    gap: 14px;
+  }
+
+  .materialImageWrap {
+    border-radius: 18px;
+  }
+
+  .materialCaption {
+    font-size: 14px;
   }
 }

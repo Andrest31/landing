@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useEffect } from 'react';
 import type { Project } from '@/types/project';
 import styles from './Projects.module.scss';
@@ -71,15 +72,35 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
           <section className={styles.modalSection}>
             <h4>Интерфейс</h4>
             <div>
-              <div className={styles.preview}>
-                <div className={styles.previewLabel}>Video / GIF preview placeholder</div>
-                <div className={styles.previewGrid}>
-                  <span />
-                  <span />
-                  <span />
-                  <span />
+              {project.materials?.length ? (
+                <div className={styles.materialsGrid}>
+                  {project.materials.map((material) => (
+                    <figure className={styles.materialCard} key={material.src}>
+                      <div className={styles.materialImageWrap}>
+                        <Image
+                          src={material.src}
+                          alt={material.alt}
+                          width={material.width}
+                          height={material.height}
+                          className={styles.materialImage}
+                        />
+                      </div>
+
+                      <figcaption className={styles.materialCaption}>{material.caption}</figcaption>
+                    </figure>
+                  ))}
                 </div>
-              </div>
+              ) : (
+                <div className={styles.preview}>
+                  <div className={styles.previewLabel}>Материалы проекта скоро будут добавлены</div>
+                  <div className={styles.previewGrid}>
+                    <span />
+                    <span />
+                    <span />
+                    <span />
+                  </div>
+                </div>
+              )}
 
               <ul>
                 {project.interfaceNotes.map((item) => (
@@ -108,7 +129,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
           </section>
 
           {project.links?.github && (
-            <a className={styles.githubLink} href={project.links.github} target="_blank">
+            <a className={styles.githubLink} href={project.links.github} target="_blank" rel="noreferrer">
               Открыть GitHub
             </a>
           )}

@@ -1,3 +1,11 @@
+export type ProjectMaterial = {
+  src: string;
+  alt: string;
+  caption: string;
+  width: number;
+  height: number;
+};
+
 export type Project = {
   id: string;
   title: string;
@@ -12,6 +20,7 @@ export type Project = {
   result: string[];
   stack: string[];
   accent: 'blue' | 'purple' | 'green' | 'pink';
+  materials?: ProjectMaterial[];
   links?: {
     github?: string;
     demo?: string;

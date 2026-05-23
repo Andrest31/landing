@@ -43,7 +43,7 @@ const contactItems: ContactItem[] = [
   },
   {
     href: 'https://t.me/HochuChipsov31',
-    label: '@HochuChipsov31',
+    label: 'HochuChipsov31',
     icon: 'telegram',
     isExternal: true,
   },
