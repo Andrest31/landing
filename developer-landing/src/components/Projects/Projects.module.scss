@@ -1,0 +1,363 @@
+.heading {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(360px, 0.7fr);
+  gap: 42px;
+  align-items: end;
+  margin-bottom: 42px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.card {
+  position: relative;
+  min-height: 430px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  background: var(--color-surface);
+  color: var(--color-text);
+  text-align: left;
+  transition:
+    transform 0.22s ease,
+    border-color 0.22s ease,
+    background 0.22s ease;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  inset: auto 24px 24px auto;
+  width: 76px;
+  height: 76px;
+  opacity: 0.85;
+  transition: transform 0.22s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 255, 255, 0.3);
+  background: var(--color-surface-soft);
+}
+
+.card:hover::before {
+  transform: rotate(12deg) scale(1.08);
+}
+
+.blue::before {
+  background: var(--color-blue);
+}
+
+.purple::before {
+  background: var(--color-purple);
+}
+
+.green::before {
+  background: var(--color-green);
+}
+
+.pink::before {
+  background: var(--color-pink);
+}
+
+.type {
+  width: fit-content;
+  padding: 8px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  color: var(--color-muted-strong);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.card h3 {
+  max-width: 620px;
+  margin: 54px 0 12px;
+  font-size: clamp(34px, 4vw, 58px);
+  line-height: 0.94;
+  letter-spacing: -0.06em;
+}
+
+.subtitle {
+  margin: 0;
+  color: var(--color-muted-strong);
+  font-size: 20px;
+  line-height: 1.25;
+}
+
+.description {
+  max-width: 640px;
+  margin: 24px 0 0;
+  color: var(--color-muted);
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+.stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 28px;
+  padding-right: 90px;
+}
+
+.stack span,
+.modalStack span {
+  padding: 8px 10px;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--color-muted-strong);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.openLabel {
+  margin-top: 28px;
+  color: var(--color-text);
+  font-size: 15px;
+  font-weight: 900;
+}
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.78);
+  backdrop-filter: blur(14px);
+}
+
+.modal {
+  width: min(100%, 1120px);
+  max-height: min(900px, calc(100vh - 48px));
+  overflow: auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(circle at 10% 0%, rgba(88, 166, 255, 0.15), transparent 28rem),
+    radial-gradient(circle at 90% 0%, rgba(168, 85, 247, 0.12), transparent 28rem),
+    #0b0b10;
+}
+
+.modalTop {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  gap: 28px;
+  padding: 30px;
+  border-bottom: 1px solid var(--color-border);
+  background: rgba(11, 11, 16, 0.86);
+  backdrop-filter: blur(16px);
+}
+
+.modalType {
+  display: inline-flex;
+  margin-bottom: 18px;
+  color: var(--color-green);
+  font-size: 13px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.modalTop h3 {
+  margin: 0;
+  font-size: clamp(42px, 7vw, 82px);
+  line-height: 0.92;
+  letter-spacing: -0.07em;
+}
+
+.modalTop p {
+  max-width: 720px;
+  margin: 18px 0 0;
+  color: var(--color-muted-strong);
+  font-size: 20px;
+  line-height: 1.35;
+}
+
+.closeButton {
+  flex: 0 0 auto;
+  height: 44px;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 0 16px;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--color-text);
+  font-weight: 800;
+}
+
+.closeButton:hover {
+  background: var(--color-text);
+  color: #000000;
+}
+
+.modalBody {
+  padding: 30px;
+}
+
+.modalSection {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  gap: 28px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.modalSection:last-child {
+  border-bottom: 0;
+}
+
+.modalSection h4 {
+  margin: 0;
+  color: var(--color-muted-strong);
+  font-size: 18px;
+}
+
+.modalSection p,
+.modalSection li {
+  color: var(--color-muted-strong);
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.modalSection p {
+  margin: 0;
+}
+
+.modalSection ul {
+  margin: 0;
+  padding-left: 22px;
+}
+
+.modalSection li + li {
+  margin-top: 10px;
+}
+
+.preview {
+  position: relative;
+  min-height: 280px;
+  margin-bottom: 22px;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background:
+    linear-gradient(135deg, rgba(88, 166, 255, 0.18), transparent),
+    linear-gradient(315deg, rgba(163, 255, 18, 0.1), transparent),
+    #15151c;
+}
+
+.previewLabel {
+  position: absolute;
+  left: 22px;
+  top: 22px;
+  z-index: 2;
+  padding: 8px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: rgba(3, 3, 5, 0.6);
+  color: var(--color-muted-strong);
+  font-size: 13px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.previewGrid {
+  position: absolute;
+  inset: 86px 24px 24px;
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 14px;
+}
+
+.previewGrid span {
+  border: 1px solid var(--color-border);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.previewGrid span:nth-child(2) {
+  grid-row: span 2;
+}
+
+.modalStack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.githubLink {
+  display: inline-flex;
+  margin-top: 26px;
+  min-height: 48px;
+  align-items: center;
+  padding: 0 18px;
+  background: var(--color-green);
+  color: #000000;
+  font-weight: 900;
+}
+
+@media (max-width: 980px) {
+  .heading {
+    grid-template-columns: 1fr;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .modalSection {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+}
+
+@media (max-width: 640px) {
+  .card {
+    min-height: auto;
+    padding: 22px;
+  }
+
+  .card h3 {
+    margin-top: 38px;
+  }
+
+  .modalOverlay {
+    padding: 10px;
+  }
+
+  .modal {
+    max-height: calc(100vh - 20px);
+    border-radius: 20px;
+  }
+
+  .modalTop {
+    flex-direction: column;
+    padding: 22px;
+  }
+
+  .closeButton {
+    width: fit-content;
+  }
+
+  .modalBody {
+    padding: 22px;
+  }
+
+  .preview {
+    min-height: 220px;
+  }
+}

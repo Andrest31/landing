@@ -1,0 +1,229 @@
+.card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 470px;
+  gap: 32px;
+  align-items: stretch;
+  padding: 34px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(circle at 0% 0%, rgba(168, 85, 247, 0.2), transparent 28rem),
+    linear-gradient(135deg, rgba(168, 85, 247, 0.1), transparent 42%),
+    var(--color-surface);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.kicker {
+  width: fit-content;
+  margin-bottom: 20px;
+  padding: 9px 13px;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--color-green);
+  font-size: 13px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.workflow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 34px;
+}
+
+.workflow span {
+  position: relative;
+  padding: 10px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.22);
+  color: var(--color-muted-strong);
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.demo {
+  min-height: 460px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.28);
+}
+
+.demoHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: center;
+}
+
+.demoLabel,
+.endpoint {
+  width: fit-content;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.demoLabel {
+  background: var(--color-purple);
+  color: #ffffff;
+}
+
+.endpoint {
+  border: 1px solid var(--color-border);
+  color: var(--color-muted-strong);
+}
+
+.toneGrid {
+  display: grid;
+  gap: 10px;
+}
+
+.toneButton {
+  border: 1px solid var(--color-border);
+  border-radius: 18px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--color-text);
+  text-align: left;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.toneButton:hover:not(:disabled) {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.toneButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.toneButton strong {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 16px;
+}
+
+.toneButton span {
+  color: var(--color-muted);
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.toneButtonActive {
+  border-color: rgba(163, 255, 18, 0.7);
+  background: rgba(163, 255, 18, 0.1);
+}
+
+.generateButton {
+  min-height: 54px;
+  border: 0;
+  border-radius: 18px;
+  background: var(--color-green);
+  color: #000000;
+  font-weight: 900;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.generateButton:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+.generateButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.72;
+}
+
+.resultBox {
+  flex: 1;
+  min-height: 150px;
+  display: flex;
+  align-items: stretch;
+  border: 1px solid var(--color-border);
+  border-radius: 18px;
+  padding: 18px;
+  background:
+    linear-gradient(135deg, rgba(88, 166, 255, 0.09), transparent),
+    rgba(255, 255, 255, 0.04);
+}
+
+.placeholder,
+.error {
+  align-self: center;
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.error {
+  color: #ff8a8a;
+}
+
+.success {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.success span {
+  width: fit-content;
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: rgba(88, 166, 255, 0.16);
+  color: var(--color-blue);
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.success p {
+  margin: 0;
+  color: var(--color-muted-strong);
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+@media (max-width: 980px) {
+  .card {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .card {
+    padding: 22px;
+  }
+
+  .demo {
+    min-height: auto;
+    padding: 18px;
+  }
+
+  .demoHeader {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

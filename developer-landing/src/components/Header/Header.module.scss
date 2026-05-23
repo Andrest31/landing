@@ -1,0 +1,134 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  height: var(--header-height);
+  border-bottom: 1px solid transparent;
+  background: rgba(3, 3, 5, 0.7);
+  backdrop-filter: blur(18px);
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.headerScrolled {
+  border-color: var(--color-border);
+  background: rgba(3, 3, 5, 0.9);
+}
+
+.inner {
+  width: min(100% - 32px, var(--container));
+  height: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 180px 1fr 180px;
+  align-items: center;
+  gap: 28px;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  width: fit-content;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: var(--color-text);
+}
+
+.logoMark {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--color-border);
+  background:
+    linear-gradient(135deg, rgba(88, 166, 255, 0.24), rgba(168, 85, 247, 0.2)),
+    #0b0b12;
+  font-weight: 800;
+}
+
+.logoText {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+.nav {
+  justify-self: center;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.navItem {
+  position: relative;
+  border: 0;
+  border-radius: 999px;
+  padding: 10px 16px;
+  background: transparent;
+  color: var(--color-muted);
+  font-size: 14px;
+  font-weight: 700;
+  transition:
+    color 0.2s ease,
+    background 0.2s ease;
+}
+
+.navItem:hover {
+  color: var(--color-text);
+}
+
+.navItemActive {
+  color: #000000;
+  background: var(--color-green);
+}
+
+@media (max-width: 980px) {
+  .inner {
+    grid-template-columns: auto 1fr;
+  }
+
+  .nav {
+    order: 3;
+    grid-column: 1 / -1;
+    justify-self: stretch;
+    overflow-x: auto;
+    border-radius: 0;
+    border-left: 0;
+    border-right: 0;
+    background: transparent;
+  }
+
+  .header {
+    height: auto;
+  }
+
+  .inner {
+    padding: 14px 0 10px;
+  }
+}
+
+@media (max-width: 640px) {
+  .inner {
+    width: min(100% - 24px, var(--container));
+    gap: 14px;
+  }
+
+  .logoText {
+    display: none;
+  }
+
+
+  .navItem {
+    white-space: nowrap;
+    padding: 9px 13px;
+  }
+}

@@ -1,0 +1,238 @@
+.hero {
+  min-height: calc(100vh - var(--header-height));
+  display: flex;
+  align-items: center;
+  padding: 72px 0 96px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 430px;
+  gap: 36px;
+  align-items: center;
+}
+
+.eyebrow {
+  width: fit-content;
+  margin: 0 0 22px;
+  padding: 9px 14px;
+  border: 1px solid var(--color-border);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--color-muted-strong);
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.title {
+  max-width: 980px;
+  margin: 0;
+  font-size: clamp(52px, 6.4vw, 96px);
+  line-height: 0.92;
+  font-weight: 750;
+  letter-spacing: -0.075em;
+}
+
+.description {
+  max-width: 710px;
+  margin: 30px 0 0;
+  color: var(--color-muted-strong);
+  font-size: 21px;
+  line-height: 1.45;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 38px;
+}
+
+.primaryAction,
+.secondaryAction {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 0 22px;
+  font-weight: 800;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.primaryAction {
+  background: var(--color-green);
+  color: #000000;
+}
+
+.secondaryAction {
+  border: 1px solid var(--color-border);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--color-text);
+}
+
+.primaryAction:hover,
+.secondaryAction:hover {
+  transform: translateY(-2px);
+}
+
+.visual {
+  position: relative;
+  justify-self: end;
+  width: min(100%, 430px);
+  min-height: 500px;
+  padding: 26px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background:
+    linear-gradient(135deg, rgba(88, 166, 255, 0.12), transparent 36%),
+    linear-gradient(315deg, rgba(168, 85, 247, 0.13), transparent 42%),
+    #101018;
+  overflow: hidden;
+}
+
+.visualHeader {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--color-muted-strong);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.statusDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--color-green);
+  box-shadow: 0 0 22px var(--color-green);
+}
+
+.codeCard {
+  position: relative;
+  z-index: 2;
+  margin-top: 64px;
+  padding: 24px;
+  border: 1px solid var(--color-border);
+  background: rgba(3, 3, 5, 0.66);
+  backdrop-filter: blur(14px);
+}
+
+.codeLine {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 18px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.codeLine:last-child {
+  border-bottom: 0;
+}
+
+.codeKey {
+  color: var(--color-muted);
+}
+
+.codeValue {
+  color: var(--color-text);
+  font-weight: 800;
+}
+
+.metrics {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.metrics div {
+  min-height: 128px;
+  padding: 16px;
+  border: 1px solid var(--color-border);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.metrics strong {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 31px;
+  line-height: 1;
+}
+
+.metrics span {
+  color: var(--color-muted);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.decorOne,
+.decorTwo {
+  position: absolute;
+  width: 84px;
+  height: 84px;
+}
+
+.decorOne {
+  right: 36px;
+  top: 96px;
+  background:
+    linear-gradient(90deg, var(--color-green) 50%, transparent 50%),
+    linear-gradient(var(--color-pink) 50%, transparent 50%);
+  background-size: 28px 28px;
+}
+
+.decorTwo {
+  left: 34px;
+  bottom: 36px;
+  border: 10px solid var(--color-blue);
+  border-right-color: var(--color-purple);
+  border-bottom-color: var(--color-green);
+}
+
+@media (max-width: 1020px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .visual {
+    justify-self: stretch;
+    width: 100%;
+    min-height: 440px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding-top: 52px;
+  }
+
+  .description {
+    font-size: 17px;
+  }
+
+  .visual {
+    min-height: auto;
+    padding: 16px;
+  }
+
+  .codeCard {
+    margin-top: 42px;
+  }
+
+  .codeLine {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .metrics {
+    grid-template-columns: 1fr;
+  }
+}
